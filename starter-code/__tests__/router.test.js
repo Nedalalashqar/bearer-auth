@@ -99,15 +99,12 @@ describe('Auth Router', () => {
         expect(userObject.token).not.toBeDefined()
         done();
       });
-
       it('bearer fails with an invalid token', async (done) => {
 
         // First, use basic to login to get a token
         const bearerResponse = await mockRequest
           .get('/users')
           .set('Authorization', `Bearer foobar`)
-
-        // Not checking the value of the response, only that we "got in"
         expect(bearerResponse.status).toBe(403);
         done();
       })
